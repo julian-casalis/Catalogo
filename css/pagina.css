@@ -38,6 +38,7 @@ a{
 }
 
 aside{
+    display: none;
     padding: 2rem;
     padding-right: 0;
     color: var(--clr-while);
@@ -60,7 +61,7 @@ aside{
     display: flex;
     flex-direction: column;
     gap: .5rem;
-
+    justify-content: space-between;
 }
 .boton-menu{
 background-color: transparent;
@@ -144,10 +145,12 @@ font-size: 1.2rem;
 
 main{
     background-color: var(--clr-while);
-    margin: 1rem;
+    margin: 1rem auto;
     margin-left: 0;
     border-radius: 2rem;
     padding: 3rem;
+    width: 95%;
+    max-width: 1220px;
 }
 
 .titulo-principal{
@@ -161,6 +164,7 @@ margin-bottom: 2rem;
     display: grid;
     grid-template-columns: repeat(4,1fr);
     gap: 1rem;
+    align-items: start; 
 }
 .producto-imagen{
     max-width: 100%;
@@ -172,13 +176,14 @@ margin-bottom: 2rem;
     background-color: var(--clr-main);
     color: var(--clr-while);
     align-items: center;
-    padding: .4rem ;
-    border-radius: .5rem;
+    padding: 0.4rem ;
+    border-radius: 0.5rem;
     margin-top: -2.5rem;
     position: relative;
     display: flex;
     flex-direction: column;
     gap: .5rem;
+    margin-top: 0;
 }
 
 .producto-titulo{
@@ -189,7 +194,7 @@ text-align: center;
 
 .producto-agregar{
 width: 100%;
-border: 0;
+border: 2px solid var(--clr-while);
 background-color: var(--clr-while);
 color: var(--clr-main);
 padding: .2rem;
@@ -366,6 +371,7 @@ transition: background-color .2s, color .2s;
         .contenedor-productos{
             grid-template-columns: 1fr 1fr;
         }
+       
         .header-movile{
             padding: 1rem;
             display: flex;
@@ -381,7 +387,15 @@ transition: background-color .2s, color .2s;
 
         }
 
-        .open-menu, .close-menu{
+        .open-menu{
+            background: none;
+            border: none;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        
+        .close-menu{
             background-color: transparent;
             color: var(--clr-gray);
             border: 0;
