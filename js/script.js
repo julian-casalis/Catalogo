@@ -207,7 +207,64 @@ const productos = [
         }
     });
 });
-   
+
+const campoBusqueda = document.querySelector("#buscar");
+const resultados = document.querySelector("#results");
+
+// Función de búsqueda
+function buscar() {
+    const textoBusqueda = campoBusqueda.value.toLowerCase(); // Obtener el valor del campo de búsqueda y convertir a minúsculas
+
+    // Filtrar productos que coincidan con el texto ingresado
+    const productosFiltrados = productos.filter(producto => {
+        return producto.titulo.toLowerCase().includes(textoBusqueda);
+    });
+
+    // Mostrar los resultados
+    mostrarResultados(productosFiltrados);
+
+    // Si no se encuentran productos, mostrar un mensaje
+    if (productosFiltrados.length === 0) {
+        resultados.innerHTML = "<li>No se encontraron productos.</li>";
+    }
+}
+
+// Función para mostrar los resultados en el HTML
+function mostrarResultados(productosFiltrados) {
+    // Limpiar los resultados anteriores
+    resultados.innerHTML = "";
+
+    // Recorrer los productos filtrados y agregar un elemento de lista por cada uno
+    productosFiltrados.forEach(producto => {
+        const li = document.createElement("li");
+        li.classList.add("producto-item");
+        li.innerHTML = `
+            <div class="producto">
+                    <h3 class="producto-titulo">${producto.titulo}</h3>
+                    <p class="producto-precio">$${producto.precio}</p>
+                </div>
+            </div>
+        `;
+        resultados.appendChild(li); // Agregar el li al listado de resultados
+     
+    });
+}
+// Opcional: también podemos permitir que el usuario busque presionando "Enter"
+campoBusqueda.addEventListener("input", () => {
+    const textoBusqueda = campoBusqueda.value.toLowerCase();
+
+    // Si el campo de búsqueda está vacío, mostrar todos los productos
+    if (textoBusqueda === "") {
+        resultados.innerHTML = "<li>Escribe algo para buscar...</li>";
+    } else {
+        const productosFiltrados = productos.filter(producto => {
+            return producto.titulo.toLowerCase().includes(textoBusqueda);
+        });
+
+        // Mostrar los productos filtrados mientras escribes
+        mostrarResultados(productosFiltrados);
+    }
+});
    function cargarProductos(productosElegidos){
        contenedorProductos.innerHTML ="";
    
@@ -272,3 +329,14 @@ const productos = [
        let nuevoNumerito = productosEnCarrito.reduce((acc,producto) => acc + producto.candidad ,0);
        numerito.innerText = nuevoNumerito;
    }
+
+
+
+
+   document.addEventListener('keyup', e => {
+    if(e.target.matches('#buscar')){
+        productos.forEach(produc =>{
+        })
+
+    }
+})

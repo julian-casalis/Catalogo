@@ -14,7 +14,7 @@ closeMenu.addEventListener("click",() =>{
 
 } )
 
-/*botonesCategorias.forEach(boton => boton.addEventListener("click",()=> {
+botonesCategorias.forEach(boton => boton.addEventListener("click",()=> {
     aside.classList.remove("aside-visible");
 
-}))*/
+}))
